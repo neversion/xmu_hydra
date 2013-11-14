@@ -44,9 +44,15 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+#调试相关
+gem 'better_errors'
+gem 'binding_of_caller'
 gem 'pry'
 gem 'pry-nav'
-gem 'better_errors'
+
+#excel解析
+gem 'roo'
 
 gem 'hydra', '6.1.0'
 gem "bootstrap-sass"
