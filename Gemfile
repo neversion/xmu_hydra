@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
@@ -47,3 +47,5 @@ end
 gem 'pry'
 gem 'pry-nav'
 gem 'better_errors'
+
+gem 'hydra', '6.1.0'
