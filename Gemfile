@@ -49,3 +49,10 @@ gem 'pry-nav'
 gem 'better_errors'
 
 gem 'hydra', '6.1.0'
+gem "bootstrap-sass"
+gem "devise"
+gem "devise-guests", "~> 0.3"
+group :development, :test do
+  gem "rspec-rails"
+  gem "jettywrapper"
+end
