@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @generic_item.title %>
+</p>
+
+<p>
+  <strong>Subtitle:</strong>
+  <%= @generic_item.subtitle %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @generic_item.creator %>
+</p>
+
+<%= link_to 'Edit', edit_generic_item_path(@generic_item) %> |
+<%= link_to 'Back', generic_items_path %>
