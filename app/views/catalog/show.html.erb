@@ -13,7 +13,9 @@
 
       <% # bookmark/folder functions -%>
       <%= render_document_heading(:h1).html_safe %>
-      <%= GenericItem.find(@document.id).title %>
+<% generic_item = GenericItem.find(@document.id) %>      
+<%= generic_item.title %>
+<a href='../generic_items/<%=generic_item.id  %>/edit'>编辑</a>
       <div class="document">
         <%= render_document_partial @document, :show %>
       </div>
