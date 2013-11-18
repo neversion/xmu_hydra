@@ -13,7 +13,7 @@
 
       <% # bookmark/folder functions -%>
       <%= render_document_heading(:h1).html_safe %>
-      <%= GenericItem.find(@document.title_tesim) %>
+      <%= GenericItem.find(@document.id).title %>
       <div class="document">
         <%= render_document_partial @document, :show %>
       </div>
