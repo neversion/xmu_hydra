@@ -8,7 +8,7 @@ def import_sample
     file.default_sheet = file.sheets.first
     line_count=file.last_row
     temp_index=1
-    2.upto(50) do |line|
+    2.upto(line_count) do |line|
       item = GenericItem.new
       item.title=file.cell(line, 2).to_s
       item.subtitle=file.cell(line, 3).to_s
