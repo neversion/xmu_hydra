@@ -1,4 +1,6 @@
 require 'roo'
+require 'rmmseg'
+require 'date'
 
 def import_sample
   begin
@@ -6,7 +8,7 @@ def import_sample
     file.default_sheet = file.sheets.first
     line_count=file.last_row
     temp_index=1
-    2.upto(line_count) do |line|
+    2.upto(50) do |line|
       item = GenericItem.new
       item.title=file.cell(line, 2).to_s
       item.subtitle=file.cell(line, 3).to_s
@@ -23,16 +25,23 @@ def import_sample
       item.publisher=file.cell(line, 14).to_s
       item.url = file.cell(line, 15).to_s
       item.becount=file.cell(line, 16).to_s
-      item.publish_date= file.cell(line, 17).to_s
+      begin
+        item.publish_date= Date.parse(file.cell(line, 17).to_s)
+      rescue
+        item.publish_date= Time.new.strftime "%Y-%m-%d %H:%M:%S"
+      end
       item.extra_format= file.cell(line, 18).to_s
       item.cover_pic= file.cell(line, 19).to_s
       item.data_stamp= file.cell(line, 20).to_s
-      puts "#{temp_index} #{item.title}"
+      item.upload_date = Time.new.strftime "%Y-%m-%d %H:%M:%S"
+      puts "#{temp_index} #{item.title} #{item.upload_date}"
       temp_index +=1
       item.save
     end
   rescue Exception => e
+    puts e.backtrace
     puts e.message
+
   end
 end
 

@@ -1,10 +1,11 @@
 class GenericItemsController < ApplicationController
+
   before_action :set_generic_item, only: [:show, :edit, :update, :destroy]
 
   # GET /generic_items
   # GET /generic_items.json
   def index
-    @generic_items = GenericItem.all
+    @generic_items = GenericItem.limit(5)
   end
 
   # GET /generic_items/1

@@ -48,13 +48,17 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field solr_name('object_type', :facetable), :label => 'Format'
-    config.add_facet_field solr_name('pub_date', :facetable), :label => 'Publication Year'
-    config.add_facet_field solr_name('subject_topic', :facetable), :label => 'Topic', :limit => 20
-    config.add_facet_field solr_name('language', :facetable), :label => 'Language', :limit => true
-    config.add_facet_field solr_name('lc1_letter', :facetable), :label => 'Call Number'
-    config.add_facet_field solr_name('subject_geo', :facetable), :label => 'Region'
-    config.add_facet_field solr_name('subject_era', :facetable), :label => 'Era'
+    #config.add_facet_field solr_name('object_type', :facetable), :label => 'Format'
+    #config.add_facet_field solr_name('pub_date', :facetable), :label => 'Publication Year'
+    #config.add_facet_field solr_name('subject_topic', :facetable), :label => 'Topic', :limit => 20
+    #config.add_facet_field solr_name('language', :facetable), :label => 'Language', :limit => true
+    #config.add_facet_field solr_name('lc1_letter', :facetable), :label => 'Call Number'
+    #config.add_facet_field solr_name('subject_geo', :facetable), :label => 'Region'
+    #config.add_facet_field solr_name('subject_era', :facetable), :label => 'Era'
+    config.add_facet_field solr_name('creator', :facetable), :label => '创建者'
+    config.add_facet_field solr_name('publisher', :facetable), :label => '出版社'
+    config.add_facet_field solr_name('format', :facetable), :label => 'Format'
+    config.add_facet_field solr_name('media_format', :facetable), :label => 'MediaFormat'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -66,32 +70,60 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field solr_name('title', :stored_searchable, type: :string), :label => 'Title:'
-    config.add_index_field solr_name('title_vern', :stored_searchable, type: :string), :label => 'Title:'
-    config.add_index_field solr_name('author', :stored_searchable, type: :string), :label => 'Author:'
-    config.add_index_field solr_name('author_vern', :stored_searchable, type: :string), :label => 'Author:'
-    config.add_index_field solr_name('format', :symbol), :label => 'Format:'
-    config.add_index_field solr_name('language', :stored_searchable, type: :string), :label => 'Language:'
-    config.add_index_field solr_name('published', :stored_searchable, type: :string), :label => 'Published:'
-    config.add_index_field solr_name('published_vern', :stored_searchable, type: :string), :label => 'Published:'
-    config.add_index_field solr_name('lc_callnum', :stored_searchable, type: :string), :label => 'Call number:'
+    #config.add_index_field solr_name('title', :stored_searchable, type: :string), :label => 'Title:'
+    #config.add_index_field solr_name('title_vern', :stored_searchable, type: :string), :label => 'Title:'
+    #config.add_index_field solr_name('author', :stored_searchable, type: :string), :label => 'Author:'
+    #config.add_index_field solr_name('author_vern', :stored_searchable, type: :string), :label => 'Author:'
+    #config.add_index_field solr_name('format', :symbol), :label => 'Format:'
+    #config.add_index_field solr_name('language', :stored_searchable, type: :string), :label => 'Language:'
+    #config.add_index_field solr_name('published', :stored_searchable, type: :string), :label => 'Published:'
+    #config.add_index_field solr_name('published_vern', :stored_searchable, type: :string), :label => 'Published:'
+    #config.add_index_field solr_name('lc_callnum', :stored_searchable, type: :string), :label => 'Call number:'
+    config.add_index_field solr_name('subtitle', :stored_searchable, type: :string), :label => '子标题:'
+    config.add_index_field solr_name('description', :stored_searchable, type: :string), :label => '描述：'
+    config.add_index_field solr_name('publisher', :stored_searchable, type: :string), :label => '出版社：'
+    config.add_index_field solr_name('creator', :stored_searchable, type: :string), :label => '创建：'
+    config.add_index_field solr_name('keyword', :stored_searchable, type: :string), :label => '关键字：'
+    config.add_index_field solr_name('upload_date', :stored_sortable, type: :string), :label => '上传时间：'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
-    config.add_show_field solr_name('title', :stored_searchable, type: :string), :label => 'Title:'
-    config.add_show_field solr_name('title_vern', :stored_searchable, type: :string), :label => 'Title:'
-    config.add_show_field solr_name('subtitle', :stored_searchable, type: :string), :label => 'Subtitle:'
-    config.add_show_field solr_name('subtitle_vern', :stored_searchable, type: :string), :label => 'Subtitle:'
-    config.add_show_field solr_name('author', :stored_searchable, type: :string), :label => 'Author:'
-    config.add_show_field solr_name('author_vern', :stored_searchable, type: :string), :label => 'Author:'
-    config.add_show_field solr_name('format', :symbol), :label => 'Format:'
-    config.add_show_field solr_name('url_fulltext_tsim', :stored_searchable, type: :string), :label => 'URL:'
-    config.add_show_field solr_name('url_suppl_tsim', :stored_searchable, type: :string), :label => 'More Information:'
-    config.add_show_field solr_name('language', :stored_searchable, type: :string), :label => 'Language:'
-    config.add_show_field solr_name('published', :stored_searchable, type: :string), :label => 'Published:'
-    config.add_show_field solr_name('published_vern', :stored_searchable, type: :string), :label => 'Published:'
-    config.add_show_field solr_name('lc_callnum', :stored_searchable, type: :string), :label => 'Call number:'
-    config.add_show_field solr_name('isbn', :stored_searchable, type: :string), :label => 'ISBN:'
+    #config.add_show_field solr_name('title', :stored_searchable, type: :string), :label => 'Title:'
+    #config.add_show_field solr_name('title_vern', :stored_searchable, type: :string), :label => 'Title:'
+    #config.add_show_field solr_name('subtitle', :stored_searchable, type: :string), :label => 'Subtitle:'
+    #config.add_show_field solr_name('subtitle_vern', :stored_searchable, type: :string), :label => 'Subtitle:'
+    #config.add_show_field solr_name('author', :stored_searchable, type: :string), :label => 'Author:'
+    #config.add_show_field solr_name('author_vern', :stored_searchable, type: :string), :label => 'Author:'
+    #config.add_show_field solr_name('format', :symbol), :label => 'Format:'
+    #config.add_show_field solr_name('url_fulltext_tsim', :stored_searchable, type: :string), :label => 'URL:'
+    #config.add_show_field solr_name('url_suppl_tsim', :stored_searchable, type: :string), :label => 'More Information:'
+    #config.add_show_field solr_name('language', :stored_searchable, type: :string), :label => 'Language:'
+    #config.add_show_field solr_name('published', :stored_searchable, type: :string), :label => 'Published:'
+    #config.add_show_field solr_name('published_vern', :stored_searchable, type: :string), :label => 'Published:'
+    #config.add_show_field solr_name('lc_callnum', :stored_searchable, type: :string), :label => 'Call number:'
+    #config.add_show_field solr_name('isbn', :stored_searchable, type: :string), :label => 'ISBN:'
+
+    config.add_show_field solr_name('subtitle', :stored_searchable, type: :string), :label => '子标题:'
+    config.add_show_field solr_name('creator', :stored_searchable, type: :string), :label => '创建者:'
+    config.add_show_field solr_name('call_number', :stored_searchable, type: :string), :label => '索书号:'
+    config.add_show_field solr_name('class1', :stored_searchable, type: :string), :label => '类别1:'
+    config.add_show_field solr_name('class2', :stored_searchable, type: :string), :label => '类别2:'
+    config.add_show_field solr_name('keyword', :stored_searchable, type: :string), :label => '关键字:'
+    config.add_show_field solr_name('set_number', :displayable, type: :string), :label => 'set_number:'
+    config.add_show_field solr_name('format', :stored_searchable, type: :string), :label => 'format:'
+    config.add_show_field solr_name('format_number', :stored_searchable, type: :string), :label => 'format_number:'
+    config.add_show_field solr_name('media_format', :stored_searchable, type: :string), :label => 'media_format:'
+    config.add_show_field solr_name('destription', :stored_searchable, type: :string), :label => 'destription:'
+    config.add_show_field solr_name('publisher', :stored_searchable, type: :string), :label => '出版社:'
+    config.add_show_field solr_name('url', :displayable, type: :string), :label => 'url:'
+    config.add_show_field solr_name('becount', :displayable, type: :string), :label => 'becount:'
+    config.add_show_field solr_name('publish_date', :displayable, type: :string), :label => '出版时间:'
+    config.add_show_field solr_name('extra_format', :displayable, type: :string), :label => 'extra_format:'
+    config.add_show_field solr_name('app_format', :displayable, type: :string), :label => 'app_format:'
+    config.add_show_field solr_name('cover_pic', :displayable, type: :string), :label => 'cover_pic:'
+    config.add_show_field solr_name('the_time', :displayable, type: :string), :label => 'the_time:'
+    config.add_show_field solr_name('data_stamp', :displayable, type: :string), :label => 'data_stamp:'
+    config.add_show_field solr_name('upload_date', :dateable, type: :string), :label => '上传时间:'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -111,7 +143,7 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field 'all_fields', :label => 'All Fields'
+    config.add_search_field 'all_fields', :label => '所有字段'
 
 
     # Now we see how to over-ride Solr request handler defaults, in this
@@ -151,16 +183,24 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, pub_date_dtsi desc, title_tesi asc', :label => 'relevance'
-    config.add_sort_field 'pub_date_dtsi desc, title_tesi asc', :label => 'year'
-    config.add_sort_field 'author_tesi asc, title_tesi asc', :label => 'author'
-    config.add_sort_field 'title_tesi asc, pub_date_dtsi desc', :label => 'title'
+    config.add_sort_field 'score desc, pub_date_dtsi desc, title_tesi asc', :label => '相关度'
+    #config.add_sort_field 'pub_date_dtsi desc, title_tesi asc', :label => 'year'
+    #config.add_sort_field 'author_tesi asc, title_tesi asc', :label => 'author'
+    #config.add_sort_field 'title_tesi asc, pub_date_dtsi desc', :label => 'title'
+    config.add_sort_field 'publish_date_dtsi desc', :label => '出版日期'
+    config.add_sort_field 'upload_date_dtsi desc', :label => '上传时间'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
   end
 
-
+  def index
+    if params[:search_field].nil? || params[:search_field].length==0
+      params[:search_field]="all_fields"
+      params[:sort]='upload_date_dtsi desc'
+    end
+    super
+  end
 
 end

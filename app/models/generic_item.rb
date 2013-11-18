@@ -22,4 +22,6 @@ class GenericItem < ActiveFedora::Base
   has_attributes :cover_pic, datastream: 'descMetadata', multiple: false
   has_attributes :the_time, datastream: 'descMetadata', multiple: false
   has_attributes :data_stamp, datastream: 'descMetadata', multiple: false
+
+  has_attributes :upload_date, datastream: 'descMetadata', multiple: false
 end

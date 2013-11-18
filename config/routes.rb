@@ -1,7 +1,9 @@
 XmuHydra::Application.routes.draw do
+  get "main/index"
   resources :generic_items
 
   root :to => "catalog#index"
+  #root :to => "main#index"
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
   devise_for :users

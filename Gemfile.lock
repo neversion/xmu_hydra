@@ -199,6 +199,7 @@ GEM
     ref (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rmmseg-cpp (0.2.9)
     roo (1.11.2)
       nokogiri
       rubyzip
@@ -294,6 +295,7 @@ DEPENDENCIES
   pry
   pry-nav
   rails (= 4.0.1)
+  rmmseg-cpp
   roo
   rspec-rails
   sass-rails (~> 4.0.0)
