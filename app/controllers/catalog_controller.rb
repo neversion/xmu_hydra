@@ -84,7 +84,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name('publisher', :stored_searchable, type: :string), :label => '出版社：'
     config.add_index_field solr_name('creator', :stored_searchable, type: :string), :label => '创建：'
     config.add_index_field solr_name('keyword', :stored_searchable, type: :string), :label => '关键字：'
-    config.add_index_field solr_name('upload_date', :stored_sortable, type: :string), :label => '上传时间：'
+    config.add_index_field solr_name('upload_date', :displayable, type: :string), :label => '上传时间：'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -188,7 +188,7 @@ class CatalogController < ApplicationController
     #config.add_sort_field 'author_tesi asc, title_tesi asc', :label => 'author'
     #config.add_sort_field 'title_tesi asc, pub_date_dtsi desc', :label => 'title'
     config.add_sort_field 'publish_date_dtsi desc', :label => '出版日期'
-    config.add_sort_field 'upload_date_dtsi desc', :label => '上传时间'
+    config.add_sort_field 'upload_timestamp_isi desc', :label => '上传时间'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
@@ -198,7 +198,7 @@ class CatalogController < ApplicationController
   def index
     if params[:search_field].nil? || params[:search_field].length==0
       params[:search_field]="all_fields"
-      params[:sort]='upload_date_dtsi desc'
+      params[:sort]='upload_timestamp_isi desc'
     end
     super
   end

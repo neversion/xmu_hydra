@@ -25,7 +25,9 @@ class CustomDatastream < ActiveFedora::OmDatastream
     t.the_time :index_as => [:displayable]
     t.data_stamp :index_as => [:displayable]
 
-    t.upload_date :index_as => [:stored_sortable], :type=>:date
+    t.upload_date :index_as => [:displayable]
+
+    t.upload_timestamp :index_as => [:stored_sortable], :type=>:integer
   end
 
   def self.xml_template

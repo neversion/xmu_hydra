@@ -33,7 +33,9 @@ def import_sample
       item.extra_format= file.cell(line, 18).to_s
       item.cover_pic= file.cell(line, 19).to_s
       item.data_stamp= file.cell(line, 20).to_s
-      item.upload_date = Time.new.strftime "%Y-%m-%d %H:%M:%S"
+      now = Time.new
+      item.upload_date = now.strftime "%Y-%m-%d %H:%M:%S"
+      item.upload_timestamp=now.to_i
       puts "#{temp_index} #{item.title} #{item.upload_date}"
       temp_index +=1
       item.save
