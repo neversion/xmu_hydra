@@ -43,7 +43,7 @@ class GenericItemsController < ApplicationController
   def update
     respond_to do |format|
       if @generic_item.update(generic_item_params)
-        format.html { redirect_to @generic_item, notice: 'Generic item was successfully updated.' }
+        format.html { redirect_to "/catalog/#{@generic_item.id}", notice: 'Generic item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
