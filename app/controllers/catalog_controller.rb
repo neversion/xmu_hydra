@@ -235,7 +235,6 @@ class CatalogController < ApplicationController
     total_count = pagination_info(@response)[:total_count]
     total_docs = []
     total_docs = total_docs + @document_list
-    binding.pry
     while !pagination_info(@response)[:last_page?]
       params[:page]=pagination_info(@response)[:current_page].to_i+1
       (@response, document_list) = get_search_results
