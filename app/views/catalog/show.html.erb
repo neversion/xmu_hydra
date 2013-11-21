@@ -11,11 +11,11 @@
     <div id="doc_<%= @document.id.to_s.parameterize %>">
 
 
-      <% # bookmark/folder functions -%>
+      <% # bookmark/folder functions  -%>
       <%= render_document_heading(:h1).html_safe %>
-<% generic_item = GenericItem.find(@document.id) %>      
-<%= generic_item.title %>
-<a href='../generic_items/<%=generic_item.id  %>/edit'>编辑</a>
+      <% if current_user %>
+      <a href='../generic_items/<%= @document.id %>/edit'>编辑</a>
+      <% end %>
       <div class="document">
         <%= render_document_partial @document, :show %>
       </div>

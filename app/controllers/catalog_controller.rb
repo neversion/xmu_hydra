@@ -195,12 +195,53 @@ class CatalogController < ApplicationController
     config.spell_max = 5
   end
 
+  #def index
+  #  if params[:search_field].nil? || params[:search_field].length==0
+  #    params[:search_field]="all_fields"
+  #    params[:sort]='upload_timestamp_isi desc'
+  #  end
+  #  super
+  #end
+
+  #覆写Blacklight::catalog#index 实现批量导出搜索结果
   def index
+    #通过设置参数以设置首页默认显示的结果
     if params[:search_field].nil? || params[:search_field].length==0
       params[:search_field]="all_fields"
       params[:sort]='upload_timestamp_isi desc'
     end
-    super
+
+    (@response, @document_list) = get_search_results
+    @filters = params[:f] || []
+
+    respond_to do |format|
+      format.html {
+        extra_head_content << view_context.auto_discovery_link_tag(:rss, url_for(params.merge(:format => 'rss')), :title => t('blacklight.search.rss_feed') )
+        extra_head_content << view_context.auto_discovery_link_tag(:atom, url_for(params.merge(:format => 'atom')), :title => t('blacklight.search.atom_feed') )
+      }
+      format.rss  { render :layout => false }
+      format.atom { render :layout => false }
+
+
+      format.json do
+        render json: render_all_search_results_as_json
+      end
+    end
+  end
+
+  private
+  #以json返回所有结果
+  def render_all_search_results_as_json
+    total_count = pagination_info(@response)[:total_count]
+    total_docs = []
+    total_docs = total_docs + @document_list
+    binding.pry
+    while !pagination_info(@response)[:last_page?]
+      params[:page]=pagination_info(@response)[:current_page].to_i+1
+      (@response, document_list) = get_search_results
+      total_docs = total_docs + document_list
+    end
+    {response: {docs: total_docs}}
   end
 
 end

@@ -1,5 +1,5 @@
 class GenericItemsController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :set_generic_item, only: [:show, :edit, :update, :destroy]
 
   # GET /generic_items
