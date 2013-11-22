@@ -15,7 +15,7 @@ class CatalogController < ApplicationController
 
   configure_blacklight do |config|
     config.default_solr_params = {
-        :qf => 'title_tesim creator_tesim',
+        :qf => 'title_tesim subtitle_tesim creator_tesim call_number_tesim class1_tesim class2_tesim publisher_tesim',
         :qt => 'search',
         :rows => 10
     }
@@ -150,20 +150,20 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
-    config.add_search_field('title') do |field|
+    config.add_search_field('标题') do |field|
       # :solr_local_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
       field.solr_local_parameters = {
-        :qf => '$title_qf',
+        :qf => 'title_tesim',
         :pf => '$title_pf'
       }
     end
 
-    config.add_search_field('author') do |field|
+    config.add_search_field('创建者') do |field|
       field.solr_local_parameters = {
-        :qf => '$author_qf',
+        :qf => 'creator_tesim',
         :pf => '$author_pf'
       }
     end
@@ -171,13 +171,13 @@ class CatalogController < ApplicationController
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
-    config.add_search_field('subject') do |field|
-      field.qt = 'search'
-      field.solr_local_parameters = {
-        :qf => '$subject_qf',
-        :pf => '$subject_pf'
-      }
-    end
+    #config.add_search_field('subject') do |field|
+    #  field.qt = 'search'
+    #  field.solr_local_parameters = {
+    #    :qf => '$subject_qf',
+    #    :pf => '$subject_pf'
+    #  }
+    #end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
@@ -194,14 +194,6 @@ class CatalogController < ApplicationController
     # mean") suggestion is offered.
     config.spell_max = 5
   end
-
-  #def index
-  #  if params[:search_field].nil? || params[:search_field].length==0
-  #    params[:search_field]="all_fields"
-  #    params[:sort]='upload_timestamp_isi desc'
-  #  end
-  #  super
-  #end
 
   #覆写Blacklight::catalog#index 实现批量导出搜索结果
   def index
