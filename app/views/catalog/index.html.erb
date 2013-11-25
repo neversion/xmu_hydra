@@ -8,7 +8,8 @@
       <%# if there are no input/search related params, display the "home" partial -%>
       <%= render 'home' %>
   <% else %>
-      <a class="export_result" href="<%= render_export_link %>" target="_blank">导出</a>
+      <a class="export_result" href="<%= render_export_link %>" target="_blank">导出搜索结果</a>
+      <a class="add_item" href="<%= new_generic_item_path %>">添加记录</a>
       <h2 class="hide-text top-content-title"><%= t('blacklight.search.search_results_header') %></h2>
 
       <% @page_title = t('blacklight.search.title', :application_name => application_name) %>
