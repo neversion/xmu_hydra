@@ -14,6 +14,7 @@ def import_sample file_name
       item.title=file.cell(line, 2).to_s
       item.series_statement=file.cell(line, 3).to_s
       item.keyword=file.cell(line, 4).to_s.split(' ')
+
       item.creator=file.cell(line, 5).to_s
       item.set_number=file.cell(line, 6).to_s
       item.call_number=file.cell(line, 7).to_s
@@ -70,6 +71,6 @@ def del_all
   end
   puts "del done"
 end
-import_sample "edks.ods"
+import_sample "media.ods"
 
 #del_all
