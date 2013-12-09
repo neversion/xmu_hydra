@@ -12,7 +12,7 @@ def import_sample file_name
       begin
       item = GenericItem.new
       item.title=file.cell(line, 2).to_s
-      item.variant_title=file.cell(line, 3).to_s
+      item.series_statement=file.cell(line, 3).to_s
       item.keyword=file.cell(line, 4).to_s.split(' ')
       item.creator=file.cell(line, 5).to_s
       item.set_number=file.cell(line, 6).to_s

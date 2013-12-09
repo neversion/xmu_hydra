@@ -5,6 +5,7 @@ class CustomDatastream < ActiveFedora::OmDatastream
     t.root(:path => "fields")
     t.title :index_as => [:stored_searchable]
     t.variant_title :index_as => [:stored_searchable]
+    t.series_statement :index_as => [:stored_searchable]
     t.keyword :index_as => [:stored_searchable]
     t.creator :index_as => [:stored_searchable,:facetable]
     t.set_number :index_as => [:displayable]
