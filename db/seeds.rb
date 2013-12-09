@@ -13,7 +13,7 @@ def import_sample file_name
       item = GenericItem.new
       item.title=file.cell(line, 2).to_s
       item.variant_title=file.cell(line, 3).to_s
-      item.keyword=file.cell(line, 4).to_s
+      item.keyword=file.cell(line, 4).to_s.split(' ')
       item.creator=file.cell(line, 5).to_s
       item.set_number=file.cell(line, 6).to_s
       item.call_number=file.cell(line, 7).to_s
@@ -60,12 +60,16 @@ def import_sample file_name
   end
 end
 
+def clean_title str
+  return str.split("\\").last.split('.')[0]
+end
+
 def del_all
   GenericItem.all.each do |item|
     item.destroy
   end
   puts "del done"
 end
-import_sample "media.ods"
+import_sample "edks.ods"
 
 #del_all
