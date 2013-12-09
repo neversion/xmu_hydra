@@ -3,6 +3,7 @@ class GenericItem < ActiveFedora::Base
 
   has_attributes :title, datastream: 'descMetadata', multiple: true
   has_attributes :variant_title, datastream: 'descMetadata', multiple: true
+  has_attributes :series_statement, datastream: 'descMetadata', multiple: true
   has_attributes :keyword, datastream: 'descMetadata', multiple: true
   has_attributes :creator, datastream: 'descMetadata', multiple: true
   has_attributes :set_number, datastream: 'descMetadata', multiple: false
