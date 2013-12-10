@@ -71,6 +71,17 @@ def del_all
   end
   puts "del done"
 end
+
+#批量更新超星视频的出版社信息
+def update_cx_publisher
+  GenericItem.all.each do |item|
+    binding.pry
+    if item.pid.split(':')[1].to_i >9579
+      item.publisher_name="超星视频"
+      item.save
+    end
+  end
+end
 import_sample "cx.ods"
 
 #del_all
