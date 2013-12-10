@@ -74,14 +74,14 @@ end
 
 #批量更新超星视频的出版社信息
 def update_cx_publisher
-  GenericItem.all.each do |item|
-    binding.pry
-    if item.pid.split(':')[1].to_i >9579
-      item.publisher_name="超星视频"
-      item.save
-    end
-  end
+   (9579..15162).each do |index|
+	g = GenericItem.find("changeme:#{index.to_s}")
+      
+g.publisher_name="超星视频"
+	g.save
+	puts index
+end  
 end
-import_sample "cx.ods"
-
+#import_sample "cx.ods"
+update_cx_publisher
 #del_all
