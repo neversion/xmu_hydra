@@ -18,7 +18,7 @@ def import_sample file_name
       item.creator=file.cell(line, 5).to_s
       item.set_number=file.cell(line, 6).to_s
       item.call_number=file.cell(line, 7).to_s
-      item.content_type=[file.cell(line, 8).to_s, file.cell(line, 9).to_s]
+      item.content_type=file.cell(line, 8).to_s
       item.carrier_type=file.cell(line, 10).to_s
       item.extent=file.cell(line, 11).to_s
       item.media_type=file.cell(line, 12).to_s
