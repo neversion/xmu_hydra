@@ -57,7 +57,7 @@ class CatalogController < ApplicationController
     #config.add_facet_field solr_name('subject_era', :facetable), :label => 'Era'
     config.add_facet_field solr_name('creator', :facetable), :label => '创建者'
     config.add_facet_field solr_name('publisher_name', :facetable), :label => '出版社'
-    config.add_facet_field solr_name('carrier_type', :facetable), :label => 'Carrier_type'
+    config.add_facet_field solr_name('carrier_type', :facetable), :label => '载体'
     config.add_facet_field solr_name('media_type', :facetable), :label => 'media_type'
 
     # Have BL send all facet field names to Solr, which has been the default
@@ -188,7 +188,7 @@ class CatalogController < ApplicationController
     #config.add_sort_field 'pub_date_dtsi desc, title_tesi asc', :label => 'year'
     #config.add_sort_field 'author_tesi asc, title_tesi asc', :label => 'author'
     #config.add_sort_field 'title_tesi asc, pub_date_dtsi desc', :label => 'title'
-    config.add_sort_field 'publish_date_dtsi desc', :label => '出版日期'
+    config.add_sort_field 'date_of_publication_dtsi desc', :label => '出版日期'
     config.add_sort_field 'upload_timestamp_isi desc', :label => '上传时间'
 
     # If there are more than this many search results, no spelling ("did you
