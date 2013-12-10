@@ -84,6 +84,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name('publisher_name', :stored_searchable, type: :string), :label => '出版社：'
     config.add_index_field solr_name('creator', :stored_searchable, type: :string), :label => '创建：'
     config.add_index_field solr_name('keyword', :stored_searchable, type: :string), :label => '关键字：'
+    config.add_index_field solr_name('date_of_publication', :displayable, type: :string), :label => '出版日期：'
     config.add_index_field solr_name('upload_date', :displayable, type: :string), :label => '上传时间：'
 
     # solr fields to be displayed in the show (single result) view
