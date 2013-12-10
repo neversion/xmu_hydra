@@ -43,7 +43,7 @@ def import_sample file_name
       rescue
         #item.date_of_publication= Time.new.strftime "%Y-%m-%d %H:%M:%S"
       end
-
+      
       now = Time.new
       item.upload_date = now.strftime "%Y-%m-%d %H:%M:%S"
       item.upload_timestamp=now.to_i
@@ -71,6 +71,6 @@ def del_all
   end
   puts "del done"
 end
-import_sample "media.ods"
+import_sample "cx.ods"
 
 #del_all
