@@ -70,6 +70,6 @@ def del_all
   end
   puts "del done"
 end
-import_sample "edks.ods"
+import_sample "media.ods"
 
 #del_all
