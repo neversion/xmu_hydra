@@ -188,7 +188,7 @@ class CatalogController < ApplicationController
     #config.add_sort_field 'pub_date_dtsi desc, title_tesi asc', :label => 'year'
     #config.add_sort_field 'author_tesi asc, title_tesi asc', :label => 'author'
     #config.add_sort_field 'title_tesi asc, pub_date_dtsi desc', :label => 'title'
-    config.add_sort_field 'publish_date_dtsi desc', :label => '出版日期'
+    config.add_sort_field 'date_of_publication_dtsi desc', :label => '出版日期'
     config.add_sort_field 'upload_timestamp_isi desc', :label => '上传时间'
 
     # If there are more than this many search results, no spelling ("did you
