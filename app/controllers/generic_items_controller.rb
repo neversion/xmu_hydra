@@ -55,9 +55,11 @@ class GenericItemsController < ApplicationController
   # DELETE /generic_items/1
   # DELETE /generic_items/1.json
   def destroy
+    temp_title = @generic_item.title[0]
     @generic_item.destroy
+    flash[:notice] = "#{temp_title} 删除完成。"
     respond_to do |format|
-      format.html { redirect_to generic_items_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end

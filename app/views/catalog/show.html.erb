@@ -15,6 +15,7 @@
       <%= render_document_heading(:h1).html_safe %>
       <% if current_user %>
       <a href='../generic_items/<%= @document.id %>/edit'>编辑</a>
+      <%= link_to '删除', GenericItem.find(@document.id), method: :delete, data: { confirm: '确认删除？' } %>
       <% end %>
       <div class="document">
         <%= render_document_partial @document, :show %>
