@@ -58,7 +58,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('creator', :facetable), :label => '创建者'
     config.add_facet_field solr_name('publisher_name', :facetable), :label => '出版社'
     config.add_facet_field solr_name('carrier_type', :facetable), :label => '载体'
-    config.add_facet_field solr_name('media_type', :facetable), :label => 'media_type'
+    #config.add_facet_field solr_name('media_type', :facetable), :label => 'media_type'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
