@@ -27,4 +27,21 @@ class GenericItem < ActiveFedora::Base
 
   has_attributes :upload_date, datastream: 'descMetadata', multiple: false
   has_attributes :upload_timestamp, datastream: 'descMetadata', multiple: false
+
+  #用户能够编辑的字段
+  def terms_for_editing
+    terms_for_display -
+        [:upload_date, :upload_timestamp]
+  end
+
+  #显示的字段
+  def terms_for_display
+    # 'type' is the RDF.type assertion, which is not present by default, but may be
+    # provided in some RDF schemas
+    #self.descMetadata.class.fields
+    [:title,:variant_title,:series_statement,:keyword,:creator,:set_number,:call_number,:content_type,
+    :carrier_type,:extent,:media_type,:summarization_of_the_content,:publisher_name,:uniform_resource_locator,
+    :date_of_publication,:digital_file_type,:illustrative_content,:duration,:dimensions,:performer_narrator_presenter,
+    :relationship_designaor,:contributor,:language_of_content,:upload_date]
+  end
 end

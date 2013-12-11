@@ -11,116 +11,119 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :title %>
-      <br>
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      <%= f.label :series_statement %>
-      <br>
-      <%= f.text_field :series_statement %>
-    </div>
-    <div class="field">
-      <%= f.label :keyword %>
-      <br>
-      <%= f.text_field :keyword %>
-    </div>
-    <div class="field">
-      <%= f.label :creator %>
-      <br>
-      <%= f.text_field :creator %>
-    </div>
-    <div class="field">
-      <%= f.label :set_number %>
-      <br>
-      <%= f.text_field :set_number %>
-    </div>
-    <div class="field">
-      <%= f.label :call_number %>
-      <br>
-      <%= f.text_field :call_number %>
-    </div>
-    <div class="field">
-      <%= f.label :content_type %>
-      <br>
-      <%= f.text_field :content_type %>
-    </div>
-    <div class="field">
-      <%= f.label :carrier_type %>
-      <br>
-      <%= f.text_field :carrier_type %>
-    </div>
-    <div class="field">
-      <%= f.label :extent %>
-      <br>
-      <%= f.text_field :extent %>
-    </div>
-    <div class="field">
-      <%= f.label :media_type %>
-      <br>
-      <%= f.text_field :media_type %>
-    </div>
-    <div class="field">
-      <%= f.label :summarization_of_the_content %>
-      <br>
-      <%= f.text_field :summarization_of_the_content %>
-    </div>
-    <div class="field">
-      <%= f.label :publisher_name %>
-      <br>
-      <%= f.text_field :publisher_name %>
-    </div>
-    <div class="field">
-      <%= f.label :uniform_resource_locator %>
-      <br>
-      <%= f.text_field :uniform_resource_locator %>
-    </div>
-    <div class="field">
-      <%= f.label :date_of_publication %>
-      <br>
-      <%= f.text_field :date_of_publication %>
-    </div>
-    <div class="field">
-      <%= f.label :digital_file_type %>
-      <br>
-      <%= f.text_field :digital_file_type %>
-    </div>
-    <div class="field">
-      <%= f.label :illustrative_content %>
-      <br>
-      <%= f.text_field :illustrative_content %>
-    </div>
-    <div class="field">
-      <%= f.label :duration %>
-      <br>
-      <%= f.text_field :duration %>
-    </div>
-    <div class="field">
-      <%= f.label :dimensions %>
-      <br>
-      <%= f.text_field :dimensions %>
-    </div>
-    <div class="field">
-      <%= f.label :performer_narrator_presenter %>
-      <br>
-      <%= f.text_field :performer_narrator_presenter %>
-    </div>
-    <div class="field">
-      <%= f.label :relationship_designaor %>
-      <br>
-      <%= f.text_field :relationship_designaor %>
-    </div>
-    <div class="field">
-      <%= f.label :contributor %>
-      <br>
-      <%= f.text_field :contributor %>
-    </div>
-    <div class="field">
-      <%= f.label :language_of_content %>
-      <br>
-      <%= f.text_field :language_of_content %>
-    </div>
+    <% (@generic_item.terms_for_editing).each do |term| %>
+        <%= render :partial => "generic_items/field_form", :locals => { generic_item: @generic_item, f: f, key: term } %>
+    <% end %>
+    <!--<div class="field">-->
+      <!--<%= f.label :title %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :title %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :series_statement %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :series_statement %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :keyword %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :keyword %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :creator %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :creator %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :set_number %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :set_number %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :call_number %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :call_number %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :content_type %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :content_type %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :carrier_type %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :carrier_type %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :extent %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :extent %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :media_type %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :media_type %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :summarization_of_the_content %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :summarization_of_the_content %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :publisher_name %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :publisher_name %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :uniform_resource_locator %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :uniform_resource_locator %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :date_of_publication %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :date_of_publication %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :digital_file_type %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :digital_file_type %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :illustrative_content %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :illustrative_content %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :duration %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :duration %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :dimensions %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :dimensions %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :performer_narrator_presenter %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :performer_narrator_presenter %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :relationship_designaor %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :relationship_designaor %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :contributor %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :contributor %>-->
+    <!--</div>-->
+    <!--<div class="field">-->
+      <!--<%= f.label :language_of_content %>-->
+      <!--<br>-->
+      <!--<%= f.text_field :language_of_content %>-->
+    <!--</div>-->
 
     <div class="actions">
       <%= f.submit %>

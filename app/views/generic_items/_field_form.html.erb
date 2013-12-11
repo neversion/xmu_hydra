@@ -1,0 +1,20 @@
+<div class="control-group">
+  <% vals = generic_item[key] %>
+  <% if required?(key) %>
+      <% tmp = '<span class="error">*</span>' + get_label(key) %>
+      <%= f.label key, tmp.html_safe, :class => "control-label" %>
+  <% else %>
+      <%= f.label key, get_label(key), :class => "control-label" %>
+  <% end %>
+  <% if vals.length!=0 %>
+      <% vals.to_ary.each_with_index do |v, index| %>
+          <% if index==0 || v.length!=0 %>
+              <%= f.text_field key, :name => "generic_item[#{key.to_s}][]", :id => "generic_item"+key.to_s, :value => v %>
+          <% end %>
+      <% end %>
+  <% else %>
+      <%= f.text_field key, :name => "generic_item[#{key.to_s}][]", :id => "generic_item"+key.to_s, :value => "" %>
+  <% end %>
+
+
+</div><!-- /control-group -->
