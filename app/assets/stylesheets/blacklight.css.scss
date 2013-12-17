@@ -2,3 +2,7 @@
 @import 'bootstrap-responsive';
 
 @import 'blacklight/blacklight';
+
+.dl-horizontal dt {
+  width: auto;
+}
