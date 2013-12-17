@@ -21,7 +21,7 @@ class GenericItem < ActiveFedora::Base
   has_attributes :duration, datastream: 'descMetadata', multiple: false
   has_attributes :dimensions, datastream: 'descMetadata', multiple: false
   has_attributes :performer_narrator_presenter, datastream: 'descMetadata', multiple: true
-  has_attributes :relationship_designaor, datastream: 'descMetadata', multiple: true
+  has_attributes :relationship_designator, datastream: 'descMetadata', multiple: true
   has_attributes :contributor, datastream: 'descMetadata', multiple: true
   has_attributes :language_of_content, datastream: 'descMetadata', multiple: false
 
@@ -42,6 +42,6 @@ class GenericItem < ActiveFedora::Base
     [:title,:variant_title,:series_statement,:keyword,:creator,:set_number,:call_number,:content_type,
     :carrier_type,:extent,:media_type,:summarization_of_the_content,:publisher_name,:uniform_resource_locator,
     :date_of_publication,:digital_file_type,:illustrative_content,:duration,:dimensions,:performer_narrator_presenter,
-    :relationship_designaor,:contributor,:language_of_content,:upload_date]
+    :relationship_designator,:contributor,:language_of_content,:upload_date]
   end
 end

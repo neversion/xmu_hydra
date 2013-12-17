@@ -23,7 +23,7 @@ class CustomDatastream < ActiveFedora::OmDatastream
     t.duration :index_as => [:stored_sortable], :type=>:integer
     t.dimensions :index_as => [:facetable]
     t.performer_narrator_presenter :index_as => [:stored_searchable,:facetable]
-    t.relationship_designaor :index_as => [:stored_searchable,:facetable]
+    t.relationship_designator :index_as => [:stored_searchable,:facetable]
     t.contributor :index_as => [:stored_searchable,:facetable]
     t.language_of_content :index_as => [:facetable]
 
