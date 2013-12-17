@@ -79,12 +79,12 @@ class CatalogController < ApplicationController
     #config.add_index_field solr_name('published', :stored_searchable, type: :string), :label => 'Published:'
     #config.add_index_field solr_name('published_vern', :stored_searchable, type: :string), :label => 'Published:'
     #config.add_index_field solr_name('lc_callnum', :stored_searchable, type: :string), :label => 'Call number:'
-    config.add_index_field solr_name('series_statement', :stored_searchable, type: :string), :label => '子标题:'
-    config.add_index_field solr_name('summarization_of_the_content', :stored_searchable, type: :string), :label => '描述：'
-    config.add_index_field solr_name('publisher_name', :stored_searchable, type: :string), :label => '出版社：'
-    config.add_index_field solr_name('creator', :stored_searchable, type: :string), :label => '创建：'
+    config.add_index_field solr_name('series_statement', :stored_searchable, type: :string), :label => '2.3.6 副标题 Variant title:'
+    config.add_index_field solr_name('summarization_of_the_content', :stored_searchable, type: :string), :label => '7.10 内容摘要 Summarization_of_the content：'
+    config.add_index_field solr_name('publisher_name', :stored_searchable, type: :string), :label => '2.8.4 出版社 Publisher’s name：'
+    config.add_index_field solr_name('creator', :stored_searchable, type: :string), :label => '19.2 创建者 Creator：'
     config.add_index_field solr_name('keyword', :stored_searchable, type: :string), :label => '关键字：'
-    config.add_index_field solr_name('date_of_publication', :stored_sortable, type: :date), :label => '出版日期：'
+    config.add_index_field solr_name('date_of_publication', :stored_sortable, type: :date), :label => '2.8.6 出版日期 Date of publication：'
     config.add_index_field solr_name('upload_date', :displayable, type: :string), :label => '上传时间：'
 
     # solr fields to be displayed in the show (single result) view
