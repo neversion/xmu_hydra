@@ -13,9 +13,10 @@
 
       <% # bookmark/folder functions  -%>
       <%= render_document_heading(:h1).html_safe %>
+<% @generic_item = GenericItem.find(@document.id) %>
       <% if current_user %>
       <a href='../generic_items/<%= @document.id %>/edit'>编辑</a>
-      <% @generic_item = GenericItem.find(@document.id) %>
+      
       <%= link_to '删除', @generic_item, method: :delete, data: { confirm: '确认删除？' } %>
       <% end %>
       <div class="document">
