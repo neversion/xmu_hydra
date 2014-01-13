@@ -84,6 +84,6 @@ def update_cx_publisher
   end
 end
 
-#import_sample "cx.ods"
-update_cx_publisher
+import_sample "edks.ods"
+#update_cx_publisher
 #del_all
