@@ -23,7 +23,8 @@ def import_sample file_name
         item.extent=file.cell(line, 11).to_s
         item.media_type=file.cell(line, 12).to_s
         item.summarization_of_the_content=file.cell(line, 13).to_s
-        item.publisher_name=file.cell(line, 14).to_s
+        #item.publisher_name=file.cell(line, 14).to_s
+        item.publisher_name="爱迪克森"
         item.uniform_resource_locator = file.cell(line, 15).to_s
         item.digital_file_type=file.cell(line, 17).to_s
         item.illustrative_content=file.cell(line, 18).to_s

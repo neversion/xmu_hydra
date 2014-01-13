@@ -11,19 +11,18 @@
     <div id="doc_<%= @document.id.to_s.parameterize %>">
 
 
-      <% # bookmark/folder functions  -%>
+      <% # bookmark/folder functions   -%>
       <%= render_document_heading(:h1).html_safe %>
-<% @generic_item = GenericItem.find(@document.id) %>
+      <% @generic_item = GenericItem.find(@document.id) %>
       <% if current_user %>
-      <a href='../generic_items/<%= @document.id %>/edit'>编辑</a>
-      
-      <%= link_to '删除', @generic_item, method: :delete, data: { confirm: '确认删除？' } %>
+          <a href='../generic_items/<%= @document.id %>/edit'>编辑</a>
+          <%= link_to '删除', @generic_item, method: :delete, data: {confirm: '确认删除？'} %>
       <% end %>
       <div class="document">
         <dl class="dl-horizontal  dl-invert">
-        <% (@generic_item.terms_for_display).each do |term| %>
-            <%= render :partial => "catalog/field_form", :locals => { generic_item: @generic_item, key: term } %>
-        <% end %>
+          <% (@generic_item.terms_for_display).each do |term| %>
+              <%= render :partial => "catalog/field_form", :locals => {generic_item: @generic_item, key: term} %>
+          <% end %>
         </dl>
       </div>
 
