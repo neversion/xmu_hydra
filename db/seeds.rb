@@ -31,7 +31,7 @@ def import_sample file_name
         item.duration=file.cell(line, 19).to_s
         item.dimensions=file.cell(line, 20).to_s
         item.performer_narrator_presenter=file.cell(line, 21).to_s
-        item.relationship_designaor=file.cell(line, 22).to_s
+        item.relationship_designator=file.cell(line, 22).to_s
         item.contributor=file.cell(line, 23).to_s
         item.language_of_content=file.cell(line, 24).to_s
 
